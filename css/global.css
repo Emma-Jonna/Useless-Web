@@ -1,0 +1,13 @@
+:root {
+  /*colors*/
+  --color-black: #000000;
+
+  /*Margin and padding*/
+  --margin-eight: 1rem;
+
+  --padding-eight: 1rem;
+}
+
+body {
+  margin: 0;
+}
