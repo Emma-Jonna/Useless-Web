@@ -12,10 +12,54 @@ let multiplyBy = 1;
 
 let baseNumber = 1;
 
-const getMultiplyTable = () => {};
+const tableClick = (button, buttonText) => {
+  button.addEventListener('click', () => {
+    // console.log(chooseTable.textContent);
+    const choosenTable = buttonText.textContent;
+    // console.log(choosenTable);
+
+    return choosenTable;
+  });
+};
+
+const getMultiplyTable = () => {
+  // Puts the questions and answers depending on wich the user chosed
+  for (let i = 0; i <= 9; i++) {
+    const multiplication = `${baseNumber} x ${multiplyBy}`;
+    const answer = baseNumber * multiplyBy;
+
+    multiplicationTableAnswers.push(answer);
+
+    multiplicationTable.push(multiplication);
+
+    multiplyBy++;
+  }
+};
+
+const createTables = () => {
+  // Writes out all multiplicationtables to the user
+  for (let i = 0; i <= 9; i++) {
+    const chooseTableContainer = document.createElement('button');
+    const chooseTable = document.createElement('p');
+    chooseTableContainer.classList.add('.multiplication-table');
+
+    chooseTableContainer.appendChild(chooseTable);
+    choosingTable.appendChild(chooseTableContainer);
+    chooseTable.textContent = multiplyBy++;
+
+    console.log(tableClick(chooseTableContainer, chooseTable));
+  }
+};
+
 const multiplyByTable = () => {};
-const getHintComment = () => {};
-const getAnswerComments = () => {};
+
+const tables = createTables();
+
+/* chooseTableContainer.addEventListener('click', () => {
+  // console.log(chooseTable.textContent);
+  const choosenTable = chooseTable.textContent;
+  console.log(choosenTable);
+}); */
 
 hint.addEventListener('click', () => {
   if (hintText.classList.contains('hidden')) {
@@ -24,31 +68,3 @@ hint.addEventListener('click', () => {
     hintText.classList.add('hidden');
   }
 });
-
-// Writes out all multiplicationtables to the user
-for (let i = 0; i <= 9; i++) {
-  const chooseTableContainer = document.createElement('button');
-  const chooseTable = document.createElement('p');
-  chooseTableContainer.classList.add('.multiplication-table');
-
-  chooseTableContainer.appendChild(chooseTable);
-  choosingTable.appendChild(chooseTableContainer);
-
-  chooseTableContainer.addEventListener('click', () => {
-    console.log(chooseTable.textContent);
-  });
-
-  chooseTable.textContent = multiplyBy++;
-}
-
-// Puts the questions and answers depending on wich the user chosed
-for (let i = 0; i <= 9; i++) {
-  const multiplication = `${baseNumber} x ${multiplyBy}`;
-  const answer = baseNumber * multiplyBy;
-
-  multiplicationTableAnswers.push(answer);
-
-  multiplicationTable.push(multiplication);
-
-  multiplyBy++;
-}
