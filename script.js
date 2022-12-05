@@ -10,23 +10,37 @@ const answerComments = ['WRONG!'];
 
 let multiplyBy = 1;
 
-let baseNumber = 1;
+const createTables = () => {
+  // Writes out all multiplicationtables to the user
+  for (let i = 0; i <= 9; i++) {
+    const chooseTableContainer = document.createElement('button');
+    const chooseTable = document.createElement('p');
+    chooseTableContainer.classList.add('multiplication-table');
+
+    chooseTableContainer.appendChild(chooseTable);
+    choosingTable.appendChild(chooseTableContainer);
+
+    chooseTable.textContent = multiplyBy++;
+
+    tableClick(chooseTableContainer, chooseTable);
+  }
+};
 
 const tableClick = (button, buttonText) => {
+  // adds a event listener for every button and prints the text
   button.addEventListener('click', () => {
-    // console.log(chooseTable.textContent);
     const choosenTable = buttonText.textContent;
-    // console.log(choosenTable);
 
-    return choosenTable;
+    getMultiplyTable(choosenTable);
   });
 };
 
-const getMultiplyTable = () => {
+const getMultiplyTable = (table) => {
+  multiplyBy = 1;
   // Puts the questions and answers depending on wich the user chosed
   for (let i = 0; i <= 9; i++) {
-    const multiplication = `${baseNumber} x ${multiplyBy}`;
-    const answer = baseNumber * multiplyBy;
+    const multiplication = `${table} x ${multiplyBy}`;
+    const answer = table * multiplyBy;
 
     multiplicationTableAnswers.push(answer);
 
@@ -34,32 +48,17 @@ const getMultiplyTable = () => {
 
     multiplyBy++;
   }
+
+  multiplicationTable.forEach((multiplication) => {
+    console.log(multiplication);
+  });
+  multiplicationTableAnswers.forEach((answer) => {
+    console.log(answer);
+  });
 };
 
-const createTables = () => {
-  // Writes out all multiplicationtables to the user
-  for (let i = 0; i <= 9; i++) {
-    const chooseTableContainer = document.createElement('button');
-    const chooseTable = document.createElement('p');
-    chooseTableContainer.classList.add('.multiplication-table');
-
-    chooseTableContainer.appendChild(chooseTable);
-    choosingTable.appendChild(chooseTableContainer);
-    chooseTable.textContent = multiplyBy++;
-
-    console.log(tableClick(chooseTableContainer, chooseTable));
-  }
-};
-
-const multiplyByTable = () => {};
-
+// creating all the tables
 const tables = createTables();
-
-/* chooseTableContainer.addEventListener('click', () => {
-  // console.log(chooseTable.textContent);
-  const choosenTable = chooseTable.textContent;
-  console.log(choosenTable);
-}); */
 
 hint.addEventListener('click', () => {
   if (hintText.classList.contains('hidden')) {
