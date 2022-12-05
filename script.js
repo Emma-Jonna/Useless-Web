@@ -1,7 +1,11 @@
 const body = document.querySelector('body');
+const h1 = document.querySelector('h1');
+const h2 = document.querySelector('h2');
 const choosingTable = document.querySelector('.choose-multiplication-table');
-const hint = document.querySelector('.hint button');
+const hint = document.querySelector('.hint');
+const hintButton = document.querySelector('.hint button');
 const hintText = document.querySelector('.hint p');
+const hidden = document.querySelector('.hidden');
 
 const multiplicationTable = [];
 const multiplicationTableAnswers = [];
@@ -9,6 +13,14 @@ const hintComments = ["I don't actually know the answer"];
 const answerComments = ['WRONG!'];
 
 let multiplyBy = 1;
+
+const hidenClass = () => {
+  hint.classList.remove('hidden');
+
+  h1.classList.add('hidden');
+  h2.classList.add('hidden');
+  choosingTable.classList.add('hidden');
+};
 
 const createTables = () => {
   // Writes out all multiplicationtables to the user
@@ -32,6 +44,8 @@ const tableClick = (button, buttonText) => {
     const choosenTable = buttonText.textContent;
 
     getMultiplyTable(choosenTable);
+
+    hidenClass();
   });
 };
 
@@ -49,18 +63,16 @@ const getMultiplyTable = (table) => {
     multiplyBy++;
   }
 
-  multiplicationTable.forEach((multiplication) => {
-    console.log(multiplication);
-  });
-  multiplicationTableAnswers.forEach((answer) => {
-    console.log(answer);
-  });
+  for (let i = 0; i < multiplicationTableAnswers.length; i++) {
+    console.log(multiplicationTable[i]);
+    console.log(multiplicationTableAnswers[i]);
+  }
 };
 
 // creating all the tables
 const tables = createTables();
 
-hint.addEventListener('click', () => {
+hintButton.addEventListener('click', () => {
   if (hintText.classList.contains('hidden')) {
     hintText.classList.remove('hidden');
   } else {
