@@ -1,11 +1,13 @@
 const body = document.querySelector('body');
 const h1 = document.querySelector('h1');
 const h2 = document.querySelector('h2');
+const h3 = document.querySelector('h3');
 const choosingTable = document.querySelector('.choose-multiplication-table');
 const hint = document.querySelector('.hint');
 const hintButton = document.querySelector('.hint button');
 const hintText = document.querySelector('.hint p');
 const hidden = document.querySelector('.hidden');
+const choiceButtons = document.querySelector('.choice-buttons');
 
 const multiplicationTable = [];
 const multiplicationTableAnswers = [];
@@ -15,7 +17,9 @@ const answerComments = ['WRONG!'];
 let multiplyBy = 1;
 
 const hidenClass = () => {
+  h3.classList.remove('hidden');
   hint.classList.remove('hidden');
+  choiceButtons.classList.remove('hidden');
 
   h1.classList.add('hidden');
   h2.classList.add('hidden');
