@@ -8,7 +8,9 @@ const hintButton = document.querySelector('.hint button');
 const hintText = document.querySelector('.hint p');
 const hidden = document.querySelector('.hidden');
 const choiceButtons = document.querySelector('.choice-buttons');
+const answerButton = document.querySelectorAll('.answer');
 
+// arrays
 const multiplicationTable = [];
 const multiplicationTableAnswers = [];
 const hintComments = [
@@ -26,6 +28,7 @@ const answerComments = [
   'Maybe you should drop out of school',
 ];
 
+// functions
 let multiplyBy = 1;
 
 const hidenClass = () => {
@@ -85,13 +88,41 @@ const getMultiplyTable = (table) => {
   }
 };
 
-// creating all the tables
-const tables = createTables();
+const randomNumber = (maxValue) => {
+  // console.log(Math.floor(Math.random() * maxValue));
+  const randNum = Math.floor(Math.random() * maxValue);
+
+  return randNum;
+};
 
 hintButton.addEventListener('click', () => {
   if (hintText.classList.contains('hidden')) {
     hintText.classList.remove('hidden');
+    const randomHint = randomNumber(hintComments.length);
+
+    // console.log(randomHint);
+
+    // console.log(hintComments[randomHint]);
+
+    hintText.textContent = hintComments[randomHint];
   } else {
     hintText.classList.add('hidden');
   }
 });
+
+// adding eventlistener for every answer button
+const answerButtons = () => {
+  answerButton.forEach((element) => {
+    element.addEventListener('click', () => {
+      console.log(element.textContent);
+    });
+  });
+};
+
+// Calling functions
+
+// creating all the tables
+const tables = createTables();
+
+// callijg function form answer buttons
+answerButtons();
