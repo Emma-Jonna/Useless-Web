@@ -11,8 +11,20 @@ const choiceButtons = document.querySelector('.choice-buttons');
 
 const multiplicationTable = [];
 const multiplicationTableAnswers = [];
-const hintComments = ["I don't actually know the answer"];
-const answerComments = ['WRONG!'];
+const hintComments = [
+  "I don't actually know the answer",
+  'Were you asleep during class?',
+  "I don't want to help you",
+  'Perhaps you should cheat on the test',
+  "You don't know the answer",
+];
+const answerComments = [
+  'WRONG!',
+  'Not even close',
+  'You are definitely failing the next test',
+  'You suck at math',
+  'Maybe you should drop out of school',
+];
 
 let multiplyBy = 1;
 
