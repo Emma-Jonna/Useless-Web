@@ -9,6 +9,7 @@ const hintText = document.querySelector('.hint p');
 const hidden = document.querySelector('.hidden');
 const choiceButtons = document.querySelector('.choice-buttons');
 const answerButton = document.querySelectorAll('.answer');
+const backButton = document.querySelector('.back-to-start');
 
 // arrays
 const multiplicationTable = [];
@@ -31,10 +32,11 @@ const answerComments = [
 // functions
 let multiplyBy = 1;
 
-const hidenClass = () => {
+const hiddenClass = () => {
   h3.classList.remove('hidden');
   hint.classList.remove('hidden');
   choiceButtons.classList.remove('hidden');
+  backButton.classList.remove('hidden');
 
   h1.classList.add('hidden');
   h2.classList.add('hidden');
@@ -57,14 +59,33 @@ const createTables = () => {
   }
 };
 
+const printTable = () => {
+  /* for (let i = 0; i < multiplicationTableAnswers.length; i++) {
+    console.log(multiplicationTable[i]);
+    console.log(multiplicationTableAnswers[i]);
+  } */
+
+  const randomIndex = randomNumber(multiplicationTable.length);
+
+  h3.textContent = multiplicationTable[randomIndex];
+  // h3.textContent = multiplicationTableAnswers[randomIndex];
+
+  console.log(multiplicationTable[randomIndex]);
+  console.log(multiplicationTableAnswers[randomIndex]);
+};
+
 const tableClick = (button, buttonText) => {
   // adds a event listener for every button and prints the text
   button.addEventListener('click', () => {
     const choosenTable = buttonText.textContent;
 
+    // console.log(choosenTable);
+
     getMultiplyTable(choosenTable);
 
-    hidenClass();
+    hiddenClass();
+
+    printTable();
   });
 };
 
@@ -82,10 +103,14 @@ const getMultiplyTable = (table) => {
     multiplyBy++;
   }
 
-  for (let i = 0; i < multiplicationTableAnswers.length; i++) {
+  // printTable();
+
+  /* for (let i = 0; i < multiplicationTableAnswers.length; i++) {
     console.log(multiplicationTable[i]);
     console.log(multiplicationTableAnswers[i]);
-  }
+  } */
+
+  // function to print
 };
 
 const randomNumber = (maxValue) => {
@@ -98,6 +123,7 @@ const randomNumber = (maxValue) => {
 hintButton.addEventListener('click', () => {
   if (hintText.classList.contains('hidden')) {
     hintText.classList.remove('hidden');
+
     const randomHint = randomNumber(hintComments.length);
 
     // console.log(randomHint);
