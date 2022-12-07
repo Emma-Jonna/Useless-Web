@@ -60,11 +60,6 @@ const createTables = () => {
 };
 
 const printTable = () => {
-  /* for (let i = 0; i < multiplicationTableAnswers.length; i++) {
-    console.log(multiplicationTable[i]);
-    console.log(multiplicationTableAnswers[i]);
-  } */
-
   const randomIndex = randomNumber(multiplicationTable.length);
 
   h3.textContent = multiplicationTable[randomIndex];
@@ -72,14 +67,14 @@ const printTable = () => {
 
   console.log(multiplicationTable[randomIndex]);
   console.log(multiplicationTableAnswers[randomIndex]);
+
+  answerButtons(multiplicationTable, randomIndex);
 };
 
 const tableClick = (button, buttonText) => {
   // adds a event listener for every button and prints the text
   button.addEventListener('click', () => {
     const choosenTable = buttonText.textContent;
-
-    // console.log(choosenTable);
 
     getMultiplyTable(choosenTable);
 
@@ -102,19 +97,9 @@ const getMultiplyTable = (table) => {
 
     multiplyBy++;
   }
-
-  // printTable();
-
-  /* for (let i = 0; i < multiplicationTableAnswers.length; i++) {
-    console.log(multiplicationTable[i]);
-    console.log(multiplicationTableAnswers[i]);
-  } */
-
-  // function to print
 };
 
 const randomNumber = (maxValue) => {
-  // console.log(Math.floor(Math.random() * maxValue));
   const randNum = Math.floor(Math.random() * maxValue);
 
   return randNum;
@@ -126,10 +111,6 @@ hintButton.addEventListener('click', () => {
 
     const randomHint = randomNumber(hintComments.length);
 
-    // console.log(randomHint);
-
-    // console.log(hintComments[randomHint]);
-
     hintText.textContent = hintComments[randomHint];
   } else {
     hintText.classList.add('hidden');
@@ -137,11 +118,21 @@ hintButton.addEventListener('click', () => {
 });
 
 // adding eventlistener for every answer button
-const answerButtons = () => {
+const answerButtons = (table, index) => {
   answerButton.forEach((element) => {
-    element.addEventListener('click', () => {
-      console.log(element.textContent);
-    });
+    let randomAnswer = randomNumber(multiplicationTableAnswers.length);
+
+    if (table[index] === multiplicationTableAnswers[randomAnswer]) {
+      randomAnswer = randomNumber(multiplicationTableAnswers.length);
+    } else {
+      console.log(randomAnswer);
+
+      element.textContent = multiplicationTableAnswers[randomAnswer];
+
+      element.addEventListener('click', () => {
+        printTable();
+      });
+    }
   });
 };
 
@@ -149,6 +140,3 @@ const answerButtons = () => {
 
 // creating all the tables
 const tables = createTables();
-
-// callijg function form answer buttons
-answerButtons();
