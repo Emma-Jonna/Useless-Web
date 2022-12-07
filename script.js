@@ -65,10 +65,10 @@ const printTable = () => {
   h3.textContent = multiplicationTable[randomIndex];
   // h3.textContent = multiplicationTableAnswers[randomIndex];
 
-  console.log(multiplicationTable[randomIndex]);
-  console.log(multiplicationTableAnswers[randomIndex]);
+  // console.log(multiplicationTable[randomIndex]);
+  // console.log(multiplicationTableAnswers[randomIndex]);
 
-  answerButtons(multiplicationTable, randomIndex);
+  answerButtons(randomIndex);
 };
 
 const tableClick = (button, buttonText) => {
@@ -118,25 +118,31 @@ hintButton.addEventListener('click', () => {
 });
 
 // adding eventlistener for every answer button
-const answerButtons = (table, index) => {
+const answerButtons = (index) => {
   answerButton.forEach((element) => {
     let randomAnswer = randomNumber(multiplicationTableAnswers.length);
 
-    if (table[index] === multiplicationTableAnswers[randomAnswer]) {
+    element.textContent = multiplicationTableAnswers[randomAnswer];
+
+    /* if (index === randomAnswer) {
       randomAnswer = randomNumber(multiplicationTableAnswers.length);
     } else {
-      console.log(randomAnswer);
-
       element.textContent = multiplicationTableAnswers[randomAnswer];
-
-      element.addEventListener('click', () => {
-        printTable();
-      });
-    }
+    }*/
+    element.addEventListener('click', () => {
+      printTable();
+      // answerButtons();
+    });
   });
 };
 
 // Calling functions
 
 // creating all the tables
-const tables = createTables();
+createTables();
+
+answerButtons();
+
+multiplicationTable.forEach((element) => {
+  console.log(element.textContent);
+});
