@@ -2,6 +2,7 @@ const body = document.querySelector('body');
 const h1 = document.querySelector('h1');
 const h2 = document.querySelector('h2');
 const h3 = document.querySelector('h3');
+const h5 = document.querySelector('h5');
 const choosingTable = document.querySelector('.choose-multiplication-table');
 const hint = document.querySelector('.hint');
 const hintButton = document.querySelector('.hint button');
@@ -127,3 +128,26 @@ console.log('hello');
 
 // console.log(choosenTable);
 // console.log(choosenTable[0]);
+
+answerButton.forEach((element) => {
+  element.addEventListener('click', () => {
+    console.log(element.textContent);
+    h3.textContent =
+      multiplicationTable[randomNumber(multiplicationTable.length)];
+    answer1.textContent =
+      multiplicationTableAnswers[
+        randomNumber(multiplicationTableAnswers.length)
+      ];
+    answerx.textContent =
+      multiplicationTableAnswers[
+        randomNumber(multiplicationTableAnswers.length)
+      ];
+    answer2.textContent =
+      multiplicationTableAnswers[
+        randomNumber(multiplicationTableAnswers.length)
+      ];
+
+    h5.style.opacity = '100%';
+    h5.textContent = answerComments[randomNumber(answerComments.length)];
+  });
+});

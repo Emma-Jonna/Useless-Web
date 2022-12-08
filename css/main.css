@@ -1,3 +1,7 @@
 .hidden {
   display: none;
 }
+
+h5 {
+  opacity: 0;
+}
