@@ -19,16 +19,9 @@ const multiplicationTableButton = document.querySelectorAll(
 const multiplicationTableText = document.querySelectorAll(
   '.multiplication-table p'
 );
-const table1 = document.getElementById('1');
-const table2 = document.getElementById('2');
-const table3 = document.getElementById('3');
-const table4 = document.getElementById('4');
-const table5 = document.getElementById('5');
-const table6 = document.getElementById('6');
-const table7 = document.getElementById('7');
-const table8 = document.getElementById('8');
-const table9 = document.getElementById('9');
-const table10 = document.getElementById('10');
+const answer1 = document.getElementById('1');
+const answerx = document.getElementById('x');
+const answer2 = document.getElementById('2');
 
 // arrays
 const multiplicationTable = [];
@@ -51,22 +44,10 @@ const answerComments = [
 
 let multiplyBy = 1;
 
-/* const getTable = (table) => {
-  for (let i = 0; i <= 9; i++) {
-    const multiplication = `${table} x ${multiplyBy}`;
-    const answer = table * multiplyBy;
-
-    multiplicationTableAnswers.push(answer);
-
-    multiplicationTable.push(multiplication);
-
-    multiplyBy++;
-  }
-}; */
-
+// adds the table num to an array
 const test = () => {
   for (let i = 0; i <= choosenTable.length - 1; i++) {
-    console.log(choosenTable[i]);
+    // console.log(choosenTable[i]);
   }
 };
 
@@ -76,6 +57,7 @@ const randomNumber = (maxValue) => {
   return randNum;
 };
 
+// removes or adds the hidden class
 const hiddenClass = () => {
   h3.classList.remove('hidden');
   hint.classList.remove('hidden');
@@ -87,6 +69,34 @@ const hiddenClass = () => {
   chooseMultiplicationTable.classList.add('hidden');
 };
 
+const getMultiplyTableList = (table) => {
+  multiplyBy = 1;
+  // Puts the questions and answers depending on wich the user chosed
+  for (let i = 0; i <= 9; i++) {
+    const multiplication = `${table} x ${multiplyBy}`;
+    const answer = table * multiplyBy;
+
+    multiplicationTableAnswers.push(answer);
+
+    multiplicationTable.push(multiplication);
+
+    multiplyBy++;
+  }
+};
+
+const printFirstTime = () => {
+  const randomIndex = randomNumber(multiplicationTable.length);
+
+  h3.textContent = multiplicationTable[randomIndex];
+  answer1.textContent =
+    multiplicationTableAnswers[randomNumber(multiplicationTableAnswers.length)];
+  answerx.textContent =
+    multiplicationTableAnswers[randomNumber(multiplicationTableAnswers.length)];
+  answer2.textContent =
+    multiplicationTableAnswers[randomNumber(multiplicationTableAnswers.length)];
+};
+
+// gives a random hint att every press
 hintButton.addEventListener('click', () => {
   if (hintText.classList.contains('hidden')) {
     hintText.classList.remove('hidden');
@@ -100,32 +110,20 @@ hintButton.addEventListener('click', () => {
 });
 
 const tableClick = (table) => {
-  // console.log(multiplicationTableText[table - 1].textContent);
-  // let tableNum = multiplicationTableText[table].textContent;
-
-  // console.log(multiplicationTableButton[table - 1].table);
-
   choosenTable.push(multiplicationTableText[table - 1].textContent);
 
   test();
   hiddenClass();
+  getMultiplyTableList(choosenTable[0]);
+  printFirstTime();
 
-  // getTable(tableNum);
+  for (let i = 0; i <= multiplicationTable.length - 1; i++) {
+    console.log(multiplicationTable[i]);
+  }
+  // console.log(choosenTable[0]);
 };
-
-/* for (let i = 0; i <= 9; i++) {
-  multiplicationTableButton[i].addEventListener('click', () => {
-    console.log(multiplicationTableText[i].textContent);
-    let table = multiplicationTableText[i].textContent;
-
-    console.log(multiplicationTableButton[i]);
-
-    // choosenTable.push(multiplicationTableButton[i].table);
-
-    getTable(table);
-  });
-} */
 
 console.log('hello');
 
-console.log(choosenTable);
+// console.log(choosenTable);
+// console.log(choosenTable[0]);
