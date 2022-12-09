@@ -43,6 +43,11 @@ const answerComments = [
   'Maybe you should drop out of school',
 ];
 
+window.addEventListener('copy', () => {
+  alert('Trying to find answers elsewhere traitor?');
+  // body.style.backgroundColor = 'red';
+});
+
 let multiplyBy = 1;
 
 // adds the table num to an array
@@ -86,30 +91,25 @@ const getMultiplyTableList = (table) => {
 };
 
 // functions that makes sure the same question is not repeated after each other
-let oldNumber = '';
+// let oldNumber = '';
 
-const uniqueNumber = (newNumber, array) => {
+const uniqueQuestion = (oldNumber, newNumber, table) => {
   let uniqueAnswer = false;
 
   while (uniqueAnswer === false) {
     if (oldNumber === newNumber) {
-      newNumber = randomNumber(array);
+      newNumber = randomNumber(table);
     } else {
       uniqueAnswer = true;
     }
   }
-
-  oldNumber = newNumber;
 
   return newNumber;
 };
 
 // prints out the question and answers and check to make sure the correct answer is not showing up
 const notCorrectAnswer = () => {
-  let tableIndex = uniqueNumber(
-    randomNumber(multiplicationTable.length),
-    multiplicationTable.length
-  );
+  let tableIndex = uniqueQuestion(randomNumber(multiplicationTable.length));
 
   let answerOneIndex = randomNumber(multiplicationTableAnswers.length);
   let answerXIndex = randomNumber(multiplicationTableAnswers.length);
@@ -145,7 +145,7 @@ hintButton.addEventListener('click', () => {
   if (hintText.classList.contains('hidden')) {
     hintText.classList.remove('hidden');
 
-    const randomHint = uniqueNumber(
+    const randomHint = uniqueQuestion(
       randomNumber(hintComments.length),
       hintComments.length
     );
@@ -168,11 +168,18 @@ const tableClick = (table) => {
 answerButton.forEach((element) => {
   element.addEventListener('click', () => {
     notCorrectAnswer();
+    let comment = randomNumber(answerComments.length);
+
+    uniqueQuestion(
+      comment,
+      randomNumber(answerComments.length),
+      answerComments.length
+    );
+
+    console.log(comment);
+
+    // h5.textContent = answerComments
 
     h5.style.opacity = '100%';
-    h5.textContent =
-      answerComments[
-        uniqueNumber(randomNumber(answerComments.length), answerComments.length)
-      ];
   });
 });
