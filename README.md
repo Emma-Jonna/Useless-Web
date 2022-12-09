@@ -1,9 +1,10 @@
 <img src="https://media.giphy.com/media/4JVTF9zR9BicshFAb7/giphy-downsized.gif" width="100%">
 INSERT MANDATORY GIF
 
-# Project Title
+# Useless math game
 
 Text about the project. This would also be a great place to link the game on Netlify.
+https://glowing-cheesecake-78c5c7.netlify.app/index.html
 
 # Installation
 
