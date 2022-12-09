@@ -85,22 +85,46 @@ const getMultiplyTableList = (table) => {
   }
 };
 
+// functions that makes sure the same question is not repeated after each other
+let oldNumber = '';
+
+const uniqueNumber = (newNumber, array) => {
+  let uniqueAnswer = false;
+
+  while (uniqueAnswer === false) {
+    if (oldNumber === newNumber) {
+      newNumber = randomNumber(array);
+    } else {
+      uniqueAnswer = true;
+    }
+  }
+
+  oldNumber = newNumber;
+
+  return newNumber;
+};
+
+// prints out the question and answers and check to make sure the correct answer is not showing up
 const notCorrectAnswer = () => {
-  let tableIndex = randomNumber(multiplicationTable.length);
+  let tableIndex = uniqueNumber(
+    randomNumber(multiplicationTable.length),
+    multiplicationTable.length
+  );
 
   let answerOneIndex = randomNumber(multiplicationTableAnswers.length);
-
   let answerXIndex = randomNumber(multiplicationTableAnswers.length);
-
   let answerTwoIndex = randomNumber(multiplicationTableAnswers.length);
 
-  let isUnique = false;
+  let isCorrect = true;
 
-  while (isUnique === false) {
+  while (isCorrect === true) {
     if (
       tableIndex === answerOneIndex ||
       tableIndex === answerXIndex ||
-      tableIndex === answerTwoIndex
+      tableIndex === answerTwoIndex ||
+      answerOneIndex === answerXIndex ||
+      answerXIndex === answerTwoIndex ||
+      answerTwoIndex === answerOneIndex
     ) {
       answerOneIndex = randomNumber(multiplicationTableAnswers.length);
       answerXIndex = randomNumber(multiplicationTableAnswers.length);
@@ -109,7 +133,7 @@ const notCorrectAnswer = () => {
       answer1.textContent = multiplicationTableAnswers[answerOneIndex];
       answerx.textContent = multiplicationTableAnswers[answerXIndex];
       answer2.textContent = multiplicationTableAnswers[answerTwoIndex];
-      isUnique = true;
+      isCorrect = false;
     }
   }
 
@@ -121,7 +145,10 @@ hintButton.addEventListener('click', () => {
   if (hintText.classList.contains('hidden')) {
     hintText.classList.remove('hidden');
 
-    const randomHint = randomNumber(hintComments.length);
+    const randomHint = uniqueNumber(
+      randomNumber(hintComments.length),
+      hintComments.length
+    );
 
     hintText.textContent = hintComments[randomHint];
   } else {
@@ -136,25 +163,16 @@ const tableClick = (table) => {
   hiddenClass();
   getMultiplyTableList(choosenTable[0]);
   notCorrectAnswer();
-
-  for (let i = 0; i <= multiplicationTable.length - 1; i++) {
-    console.log(multiplicationTable[i]);
-  }
-  // console.log(choosenTable[0]);
 };
-
-console.log('hello');
-
-// console.log(choosenTable);
-// console.log(choosenTable[0]);
 
 answerButton.forEach((element) => {
   element.addEventListener('click', () => {
-    console.log(element.textContent);
-
     notCorrectAnswer();
 
     h5.style.opacity = '100%';
-    h5.textContent = answerComments[randomNumber(answerComments.length)];
+    h5.textContent =
+      answerComments[
+        uniqueNumber(randomNumber(answerComments.length), answerComments.length)
+      ];
   });
 });
