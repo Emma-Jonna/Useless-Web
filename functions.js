@@ -85,16 +85,35 @@ const getMultiplyTableList = (table) => {
   }
 };
 
-const printFirstTime = () => {
-  const randomIndex = randomNumber(multiplicationTable.length);
+const notCorrectAnswer = () => {
+  let tableIndex = randomNumber(multiplicationTable.length);
 
-  h3.textContent = multiplicationTable[randomIndex];
-  answer1.textContent =
-    multiplicationTableAnswers[randomNumber(multiplicationTableAnswers.length)];
-  answerx.textContent =
-    multiplicationTableAnswers[randomNumber(multiplicationTableAnswers.length)];
-  answer2.textContent =
-    multiplicationTableAnswers[randomNumber(multiplicationTableAnswers.length)];
+  let answerOneIndex = randomNumber(multiplicationTableAnswers.length);
+
+  let answerXIndex = randomNumber(multiplicationTableAnswers.length);
+
+  let answerTwoIndex = randomNumber(multiplicationTableAnswers.length);
+
+  let isUnique = false;
+
+  while (isUnique === false) {
+    if (
+      tableIndex === answerOneIndex ||
+      tableIndex === answerXIndex ||
+      tableIndex === answerTwoIndex
+    ) {
+      answerOneIndex = randomNumber(multiplicationTableAnswers.length);
+      answerXIndex = randomNumber(multiplicationTableAnswers.length);
+      answerTwoIndex = randomNumber(multiplicationTableAnswers.length);
+    } else {
+      answer1.textContent = multiplicationTableAnswers[answerOneIndex];
+      answerx.textContent = multiplicationTableAnswers[answerXIndex];
+      answer2.textContent = multiplicationTableAnswers[answerTwoIndex];
+      isUnique = true;
+    }
+  }
+
+  h3.textContent = multiplicationTable[tableIndex];
 };
 
 // gives a random hint att every press
@@ -116,7 +135,7 @@ const tableClick = (table) => {
   test();
   hiddenClass();
   getMultiplyTableList(choosenTable[0]);
-  printFirstTime();
+  notCorrectAnswer();
 
   for (let i = 0; i <= multiplicationTable.length - 1; i++) {
     console.log(multiplicationTable[i]);
@@ -132,20 +151,8 @@ console.log('hello');
 answerButton.forEach((element) => {
   element.addEventListener('click', () => {
     console.log(element.textContent);
-    h3.textContent =
-      multiplicationTable[randomNumber(multiplicationTable.length)];
-    answer1.textContent =
-      multiplicationTableAnswers[
-        randomNumber(multiplicationTableAnswers.length)
-      ];
-    answerx.textContent =
-      multiplicationTableAnswers[
-        randomNumber(multiplicationTableAnswers.length)
-      ];
-    answer2.textContent =
-      multiplicationTableAnswers[
-        randomNumber(multiplicationTableAnswers.length)
-      ];
+
+    notCorrectAnswer();
 
     h5.style.opacity = '100%';
     h5.textContent = answerComments[randomNumber(answerComments.length)];
