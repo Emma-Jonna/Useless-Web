@@ -50,13 +50,6 @@ window.addEventListener('copy', () => {
 
 let multiplyBy = 1;
 
-// adds the table num to an array
-const test = () => {
-  for (let i = 0; i <= choosenTable.length - 1; i++) {
-    // console.log(choosenTable[i]);
-  }
-};
-
 const randomNumber = (maxValue) => {
   const randNum = Math.floor(Math.random() * maxValue);
 
@@ -158,7 +151,6 @@ hintButton.addEventListener('click', () => {
     }
 
     oldHintComment = hintComment;
-    console.log(oldHintComment);
 
     hintText.textContent = hintComments[hintComment];
   } else {
@@ -169,7 +161,6 @@ hintButton.addEventListener('click', () => {
 const tableClick = (table) => {
   choosenTable.push(multiplicationTableText[table - 1].textContent);
 
-  test();
   hiddenClass();
   getMultiplyTableList(choosenTable[0]);
   notCorrectAnswer();
