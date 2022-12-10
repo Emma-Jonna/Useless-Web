@@ -1,4 +1,4 @@
-<img src="https://media.giphy.com/media/4JVTF9zR9BicshFAb7/giphy-downsized.gif" width="100%">
+<img src="https://media.giphy.com/media/DfSXiR60W9MVq/giphy.gif" width="100%">
 
 # Useless math game
 
