@@ -66,6 +66,7 @@ const randomNumber = (maxValue) => {
 // removes or adds the hidden class
 const hiddenClass = () => {
   h3.classList.remove('hidden');
+  h5.classList.remove('hidden');
   hint.classList.remove('hidden');
   choiceButtons.classList.remove('hidden');
   backButton.classList.remove('hidden');

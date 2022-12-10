@@ -27,7 +27,6 @@ a {
 }
 
 body {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,6 +45,10 @@ body {
 
 h5 {
   height: 6rem;
+}
+
+.choose-multiplication-table button {
+  margin: 0.2rem 0.4rem;
 }
 
 @media screen and (min-width: 560px) {
