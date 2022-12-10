@@ -90,26 +90,24 @@ const getMultiplyTableList = (table) => {
   }
 };
 
-// functions that makes sure the same question is not repeated after each other
-// let oldNumber = '';
-
-const uniqueQuestion = (oldNumber, newNumber, table) => {
-  let uniqueAnswer = false;
-
-  while (uniqueAnswer === false) {
-    if (oldNumber === newNumber) {
-      newNumber = randomNumber(table);
-    } else {
-      uniqueAnswer = true;
-    }
-  }
-
-  return newNumber;
-};
+let number = randomNumber(answerComments.length);
+let oldNumber = '';
 
 // prints out the question and answers and check to make sure the correct answer is not showing up
 const notCorrectAnswer = () => {
-  let tableIndex = uniqueQuestion(randomNumber(multiplicationTable.length));
+  let uniqueComment = false;
+
+  while (uniqueComment === false) {
+    if (number === oldNumber) {
+      number = randomNumber(answerComments.length);
+    } else {
+      uniqueComment = true;
+    }
+  }
+
+  let tableIndex = number;
+
+  oldNumber = number;
 
   let answerOneIndex = randomNumber(multiplicationTableAnswers.length);
   let answerXIndex = randomNumber(multiplicationTableAnswers.length);
@@ -140,17 +138,28 @@ const notCorrectAnswer = () => {
   h3.textContent = multiplicationTable[tableIndex];
 };
 
+let hintComment = randomNumber(answerComments.length);
+let oldHintComment = '';
+
 // gives a random hint att every press
 hintButton.addEventListener('click', () => {
   if (hintText.classList.contains('hidden')) {
     hintText.classList.remove('hidden');
 
-    const randomHint = uniqueQuestion(
-      randomNumber(hintComments.length),
-      hintComments.length
-    );
+    let uniqueComment = false;
 
-    hintText.textContent = hintComments[randomHint];
+    while (uniqueComment === false) {
+      if (hintComment === oldHintComment) {
+        hintComment = randomNumber(answerComments.length);
+      } else {
+        uniqueComment = true;
+      }
+    }
+
+    oldHintComment = hintComment;
+    console.log(oldHintComment);
+
+    hintText.textContent = hintComments[hintComment];
   } else {
     hintText.classList.add('hidden');
   }
@@ -165,20 +174,26 @@ const tableClick = (table) => {
   notCorrectAnswer();
 };
 
+let comment = randomNumber(answerComments.length);
+let oldComment = '';
+
 answerButton.forEach((element) => {
   element.addEventListener('click', () => {
     notCorrectAnswer();
-    let comment = randomNumber(answerComments.length);
 
-    uniqueQuestion(
-      comment,
-      randomNumber(answerComments.length),
-      answerComments.length
-    );
+    let uniqueComment = false;
 
-    console.log(comment);
+    while (uniqueComment === false) {
+      if (comment === oldComment) {
+        comment = randomNumber(answerComments.length);
+      } else {
+        uniqueComment = true;
+      }
+    }
 
-    // h5.textContent = answerComments
+    h5.textContent = answerComments[comment];
+
+    oldComment = comment;
 
     h5.style.opacity = '100%';
   });
