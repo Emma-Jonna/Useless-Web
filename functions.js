@@ -84,7 +84,7 @@ const getMultiplyTableList = (table) => {
   }
 };
 
-let number = randomNumber(answerComments.length);
+let number = randomNumber(multiplicationTable.length);
 let oldNumber = '';
 
 // prints out the question and answers and check to make sure the correct answer is not showing up
@@ -93,7 +93,7 @@ const notCorrectAnswer = () => {
 
   while (uniqueComment === false) {
     if (number === oldNumber) {
-      number = randomNumber(answerComments.length);
+      number = randomNumber(multiplicationTable.length);
     } else {
       uniqueComment = true;
     }
