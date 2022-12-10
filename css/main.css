@@ -25,3 +25,28 @@ a {
   text-decoration: none;
   color: var(--color-white);
 }
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding-top: 12rem;
+}
+
+.hint {
+  position: absolute;
+  top: 5%;
+}
+
+.hint p {
+  padding-top: 1rem;
+}
+
+h5 {
+  height: 6rem;
+}
+
+@media screen and (min-width: 560px) {
+}
