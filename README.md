@@ -1,14 +1,13 @@
-<img src="https://media.giphy.com/media/4JVTF9zR9BicshFAb7/giphy-downsized.gif" width="100%">
-INSERT MANDATORY GIF
+<img src="https://media.giphy.com/media/DfSXiR60W9MVq/giphy.gif" width="100%">
 
 # Useless math game
 
-Text about the project. This would also be a great place to link the game on Netlify.
+Whant to practice some math? this game will not help you at all\
 https://glowing-cheesecake-78c5c7.netlify.app/index.html
 
 # Installation
 
-Add the installation instructions.
+Just clone the reposirtory and everything should work.
 
 # Code Review
 
