@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Poppins-Regular';
+  src: local('Poppins-Regular'),
+    url('/fonts/Poppins/Poppins-Regular.woff2') format('woff2'),
+    url('/fonts/Poppins/Poppins-Regular.woff') format('woff');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Love ya like a sister';
+  src: local('Love ya like a sister'),
+    url('/fonts/Love-ya-like-a-sister/LoveYaLikeASister-Regular.woff2')
+      format('woff2'),
+    url('/fonts/Love-ya-like-a-sister/LoveYaLikeASister-Regular.woff')
+      format('woff');
+  font-weight: 400;
+}

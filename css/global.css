@@ -1,6 +1,12 @@
 :root {
   /*colors*/
   --color-black: #000000;
+  --color-white: #ffffff;
+  --color-dark-green: #0a2d33;
+  --color-dark-red: #481d24;
+  --color-orange: #e9724c;
+  --color-green: #528e5f;
+  --color-light-grey: #dee1e3;
 
   /*Margin and padding*/
   --margin-eight: 1rem;
