@@ -33,7 +33,6 @@ body {
   align-items: center;
   justify-content: center;
   gap: 3rem;
-  /* padding-top: 3rem; */
 }
 
 .hint {
@@ -51,7 +50,4 @@ h5 {
 
 .choose-multiplication-table button {
   margin: 0.2rem 0.4rem;
-}
-
-@media screen and (min-width: 560px) {
 }
