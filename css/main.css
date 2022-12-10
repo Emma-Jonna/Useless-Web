@@ -5,3 +5,23 @@
 h5 {
   opacity: 0;
 }
+
+button {
+  width: 4rem;
+  height: 4rem;
+  border: 0.1rem solid var(--color-light-grey);
+  border-radius: 1rem;
+  background-color: var(--color-orange);
+  cursor: pointer;
+  color: var(--color-white);
+}
+
+.hint button {
+  background-color: var(--color-green);
+  width: 7rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-white);
+}

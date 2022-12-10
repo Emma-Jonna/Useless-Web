@@ -1,14 +1,41 @@
 h1,
 h2,
 h4,
+h5,
 .hint p,
 .back-to-start a {
   font-family: Love ya like a sister;
+  font-weight: normal;
+  margin: 0;
 }
 
 h3,
-h5,
 .answer,
 .multiplication-table p {
   font-family: Poppins-Regular;
+  margin: 0;
+}
+
+h1 {
+  font-size: 6rem;
+}
+
+h2,
+.multiplication-table p,
+.answer {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 5rem;
+}
+
+h5 {
+  font-size: 3rem;
+}
+
+a,
+h4,
+.hint p {
+  font-size: 1.5rem;
 }
