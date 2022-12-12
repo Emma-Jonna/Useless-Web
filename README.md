@@ -22,4 +22,4 @@ Just clone the reposirtory and everything should work.
 Tested by the following people:
 
 1. Josef Forkman
-2. John Doe
+2. Petter Jakobsson
